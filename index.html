@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me – Behlim Mo Sufyan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url(jh.png);
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #222;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #4db8ff;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 50px 0 20px;
+      color: #222;
+    }
+
+    .typed-text::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .about-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .about-section img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .about-section img:hover {
+      transform: scale(1.05);
+    }
+    .about-section {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+    .about-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+    .section {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+    .section h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    .section ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e8e8e8;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text h2 {
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+    
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="award-certifications.html">Awards & Certifications</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Typing Animation Header -->
+  <div class="header"><span class="typed-text"></span></div>
+
+  <!-- About Section -->
+  <div class="about-section">
+    <img src="your-photo.jpg" alt="Sufyan's Profile Photo" />
+    <div class="about-text">
+      <h2>Hello! I'm Behlim Mo Sufyan</h2>
+      <p>I am a passionate Computer Science Engineering student with a strong interest in web development, design, and technology. I love creating interactive and animated websites using HTML, CSS, JavaScript, and modern tools.</p>
+    </div>
+  </div>
+
+  <!-- Other Sections... -->
+  <div class="section">
+    <h3 class="emoji">📖 My Journey</h3>
+    <p>I began my tech journey in high school, exploring how websites work. Over time, I developed a passion for frontend and backend development, particularly the MERN stack.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">🎓 Education</h3>
+    <ul>
+      <li><strong>The National English School</strong> (2009–2021)</li>
+      <li><strong>Ankur School – Science Stream</strong> (2021–2023)</li>
+      <li><strong>Bachelor of Engineering – Computer Science</strong> – Silver Oak University, Ahmedabad (2023–Present)</li>
+      <li><strong>SPI:</strong> 9.28 (Sem 1), 9.47 (Sem 2), 8.87 (Sem 3) – <strong>Avg: 9.20</strong></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">🚀 What I'm Currently Working On</h3>
+    <p>Upskilling in the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js) and actively looking for internship opportunities to apply my knowledge in real-world projects.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">💼 Skills</h3>
+    <ul>
+      <li>Languages: HTML, CSS, JavaScript, Python, Java</li>
+      <li>Tools: Git, VS Code, MongoDB, Canva</li>
+      <li>Soft Skills: Teamwork, Problem-solving, Time Management</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">🏆 Achievements</h3>
+    <ul>
+      <li>🏆 1st Place – Tech Treasure Hunt Room, Adani Institute</li>
+      <li>🏅 Participant – Junoon National Competition</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">🌟 Interests & Values</h3>
+    <p>I love UI design, photography, and participating in coding challenges. I believe in continuous learning, writing clean code, and building meaningful digital experiences.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="emoji">📬 Let's Connect</h3>
+    <p>Looking to collaborate or hire an enthusiastic developer? <a href="contact.html">Get in touch with me</a>!</p>
+  </div>
+
+  <div class="footer">
+    © 2025 Behlim Mo Sufyan. All rights reserved.
+  </div>
+
+  <!-- Internal JavaScript for Typing Animation -->
+  <script>
+    const text = "About Me";
+    const typedText = document.querySelector(".typed-text");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typedText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 150);
+      }
+    }
+
+    window.onload = type;
+  </script>
+
+</body>
+</html>
