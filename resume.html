@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Download – Behlim Mo Sufyan</title>
+  <script>
+    window.onload = function () {
+      const link = document.createElement('a');
+      link.href = 'resume.pdf'; // Replace with your actual filename
+      link.download = 'sufyan_resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  </script>
+</head>
+<body>
+  <p>Your resume is downloading...</p>
+</body>
+</html>
