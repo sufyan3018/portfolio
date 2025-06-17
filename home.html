@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home – Behlim Mo Sufyan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('jh.png');
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #222;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #4db8ff;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 60px 0 20px;
+      color: #222;
+    }
+
+    .typed-text::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .overview-section {
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .overview-section:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .overview-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .overview-section p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .overview-section a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4db8ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .overview-section a:hover {
+      background-color: #3399dd;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e8e8e8;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .header {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-links">
+     <li><a href="home.html">Home</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="award-certifications.html">Awards & Certifications</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Typing Animation Header -->
+  <div class="header"><span class="typed-text"></span></div>
+
+  <!-- Section Previews -->
+  <div class="overview-section">
+    <h2>👤 About Me</h2>
+    <p>Know who I am, my journey, passions, and what drives me in the tech world.</p>
+    <a href="about.html">Explore More</a>
+  </div>
+
+  <div class="overview-section">
+    <h2>💼 Skills</h2>
+    <p>A glance at the technologies, tools, and soft skills I've mastered over time.</p>
+    <a href="skills.html">View Skills</a>
+  </div>
+
+  <div class="overview-section">
+    <h2>🏆 Awards & Certifications</h2>
+    <p>Achievements that shaped my career and motivated me to excel.</p>
+    <a href="award-certifications.html">See My Achievements</a>
+  </div>
+
+  <div class="overview-section">
+    <h2>📄 Resume</h2>
+    <p>Take a look at my professional journey, education, and qualifications.</p>
+    <a href="resume.html"download>Download Resume</a>
+  </div>
+
+  <div class="overview-section">
+    <h2>📬 Contact</h2>
+    <p>Interested in working together or have a question? Reach out to me!</p>
+    <a href="contact.html">Get in Touch</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 Behlim Mo Sufyan. All rights reserved.
+  </div>
+
+  <!-- Typing Animation Script -->
+  <script>
+    const text = "Welcome to My Portfolio";
+    const typedText = document.querySelector(".typed-text");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typedText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 150);
+      }
+    }
+
+    window.onload = type;
+  </script>
+
+</body>
+</html>
