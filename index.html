@@ -17,15 +17,19 @@
       background-image: url(jh.png);
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      background-color: #f4f4f4;
       color: #333;
     }
 
     /* Navbar */
     .navbar {
-      display: flex;
-      justify-content: center;
       background-color: #222;
-      padding: 15px 0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -49,6 +53,20 @@
       color: #4db8ff;
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    /* Header Animation */
     .header {
       text-align: center;
       font-size: 2.5rem;
@@ -68,6 +86,7 @@
       50% { opacity: 0; }
     }
 
+    /* About Section */
     .about-section {
       max-width: 1000px;
       margin: 40px auto;
@@ -79,6 +98,12 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-section:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
     .about-section img {
@@ -93,15 +118,6 @@
     .about-section img:hover {
       transform: scale(1.05);
     }
-    .about-section {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.about-section:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
 
     .about-text {
       flex: 1;
@@ -119,6 +135,7 @@
       margin-bottom: 15px;
     }
 
+    /* General Sections */
     .section {
       max-width: 900px;
       margin: 40px auto;
@@ -126,21 +143,17 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .section {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.section:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
+    .section:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
 
     .section h3 {
       font-size: 1.6rem;
       margin-bottom: 15px;
-      
     }
 
     .section ul {
@@ -161,24 +174,69 @@
       margin-top: 60px;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .about-section {
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+        display: none;
+        background-color: #222;
+        padding: 20px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .about-section,
+      .section {
         flex-direction: column;
         text-align: center;
+        padding: 20px;
+        margin: 20px 10px;
       }
 
       .about-text h2 {
         font-size: 1.8rem;
       }
 
-      .nav-links {
-        flex-direction: column;
-        gap: 15px;
+      .section h3 {
+        font-size: 1.4rem;
+      }
+
+      .header {
+        font-size: 2rem;
       }
     }
-    
 
+    @media (max-width: 480px) {
+      body {
+        font-size: 0.95rem;
+      }
 
+      .about-text h2 {
+        font-size: 1.5rem;
+      }
+
+      .section h3 {
+        font-size: 1.3rem;
+      }
+
+      .header {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -186,18 +244,23 @@
   <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <ul class="nav-links">
-          <li><a href="home.html">Home</a></li>
-      <li><a href="index.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="award-certifications.html">Awards & Certifications</a></li>
-      <li><a href="resume.html">Resume</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="award-certifications.html">Awards & Certifications</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Typing Animation Header -->
+  <!-- Header -->
   <div class="header"><span class="typed-text"></span></div>
 
   <!-- About Section -->
@@ -209,7 +272,7 @@
     </div>
   </div>
 
-  <!-- Other Sections... -->
+  <!-- Sections -->
   <div class="section">
     <h3 class="emoji">📖 My Journey</h3>
     <p>I began my tech journey in high school, exploring how websites work. Over time, I developed a passion for frontend and backend development, particularly the MERN stack.</p>
@@ -261,7 +324,7 @@
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <!-- Internal JavaScript for Typing Animation -->
+  <!-- Scripts -->
   <script>
     const text = "About Me";
     const typedText = document.querySelector(".typed-text");
@@ -275,8 +338,11 @@
       }
     }
 
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
     window.onload = type;
   </script>
-
 </body>
 </html>
