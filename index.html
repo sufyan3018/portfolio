@@ -28,7 +28,7 @@
       background-color: #222;
       padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       position: sticky;
       top: 0;
@@ -39,6 +39,8 @@
       list-style: none;
       display: flex;
       gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links li a {
@@ -51,19 +53,6 @@
 
     .nav-links li a:hover {
       color: #4db8ff;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
     }
 
     /* Header Animation */
@@ -181,24 +170,6 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .nav-links {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-        width: 100%;
-        display: none;
-        background-color: #222;
-        padding: 20px 0;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
       .about-section,
       .section {
         flex-direction: column;
@@ -244,12 +215,7 @@
   <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
         <li><a href="home.html">Home</a></li>
         <li><a href="index.html">About</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -324,7 +290,7 @@
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <!-- Scripts -->
+  <!-- Typing Animation Script -->
   <script>
     const text = "About Me";
     const typedText = document.querySelector(".typed-text");
@@ -336,10 +302,6 @@
         index++;
         setTimeout(type, 150);
       }
-    }
-
-    function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("active");
     }
 
     window.onload = type;
