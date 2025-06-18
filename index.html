@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me – Behlim Mo Sufyan</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+      --section-bg: #f4f4f4;
+      --background-image: url('jh.png');
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f4f4f4;
+      --card-bg: #1e1e1e;
+      --section-bg: #1c1c1c;
+      --background-image: none;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,21 +30,21 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url(jh.png);
+      background-color: var(--bg-color);
+      background-image: var(--background-image);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       min-height: 100vh;
-      background-color: #f4f4f4;
-      color: #333;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Navbar */
     .navbar {
-      background-color: #222;
+      background-color: #000;
       padding: 15px 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
@@ -55,14 +71,59 @@
       color: #4db8ff;
     }
 
-    /* Header Animation */
+    .toggle-container {
+      position: relative;
+      width: 60px;
+      height: 100px;
+      background: #d1d1d1;
+      border: 3px solid #999;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px 0;
+      box-shadow: inset 0 0 5px #888;
+      font-family: monospace;
+      font-weight: bold;
+      color: white;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .toggle-label {
+      font-size: 12px;
+      color: red;
+    }
+
+    .toggle-handle {
+      width: 14px;
+      height: 40px;
+      background: linear-gradient(to bottom, #ccc, #888);
+      border: 2px solid #555;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-container.on-top .toggle-handle {
+      transform: translateY(-30px);
+    }
+
+    .toggle-container.off .toggle-handle {
+      transform: translateY(0);
+    }
+
+    .toggle-container.on-bottom .toggle-handle {
+      transform: translateY(30px);
+    }
+
     .header {
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       letter-spacing: 1px;
       margin: 50px 0 20px;
-      color: #222;
     }
 
     .typed-text::after {
@@ -75,11 +136,10 @@
       50% { opacity: 0; }
     }
 
-    /* About Section */
     .about-section {
       max-width: 1000px;
       margin: 40px auto;
-      background-color: white;
+      background-color: var(--card-bg);
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       padding: 40px;
@@ -124,11 +184,10 @@
       margin-bottom: 15px;
     }
 
-    /* General Sections */
     .section {
       max-width: 900px;
       margin: 40px auto;
-      background-color: #fff;
+      background-color: var(--section-bg);
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -157,9 +216,9 @@
     .footer {
       text-align: center;
       padding: 20px;
-      background-color: #e8e8e8;
+      background-color: var(--card-bg);
       font-size: 0.95rem;
-      color: #555;
+      color: var(--text-color);
       margin-top: 60px;
     }
 
@@ -168,7 +227,6 @@
       height: auto;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       .about-section,
       .section {
@@ -177,59 +235,27 @@
         padding: 20px;
         margin: 20px 10px;
       }
-
-      .about-text h2 {
-        font-size: 1.8rem;
-      }
-
-      .section h3 {
-        font-size: 1.4rem;
-      }
-
-      .header {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        font-size: 0.95rem;
-      }
-
-      .about-text h2 {
-        font-size: 1.5rem;
-      }
-
-      .section h3 {
-        font-size: 1.3rem;
-      }
-
-      .header {
-        font-size: 1.8rem;
-      }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="award-certifications.html">Awards & Certifications</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="toggle-container off" id="themeSwitch" onclick="toggleTheme()">
+      <div class="toggle-label">ON</div>
+      <div class="toggle-handle"></div>
+      <div class="toggle-label">ON</div>
+    </div>
+  </nav>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="index.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="award-certifications.html">Awards & Certifications</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Header -->
   <div class="header"><span class="typed-text"></span></div>
-
-  <!-- About Section -->
   <div class="about-section">
     <img src="your-photo.jpg" alt="Sufyan's Profile Photo" />
     <div class="about-text">
@@ -238,7 +264,6 @@
     </div>
   </div>
 
-  <!-- Sections -->
   <div class="section">
     <h3 class="emoji">📖 My Journey</h3>
     <p>I began my tech journey in high school, exploring how websites work. Over time, I developed a passion for frontend and backend development, particularly the MERN stack.</p>
@@ -256,7 +281,7 @@
 
   <div class="section">
     <h3 class="emoji">🚀 What I'm Currently Working On</h3>
-    <p>Upskilling in the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js) and actively looking for internship opportunities to apply my knowledge in real-world projects.</p>
+    <p>Upskilling in the <strong>MERN Stack</strong> and actively looking for internship opportunities to apply my knowledge in real-world projects.</p>
   </div>
 
   <div class="section">
@@ -290,12 +315,10 @@
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <!-- Typing Animation Script -->
   <script>
     const text = "About Me";
     const typedText = document.querySelector(".typed-text");
     let index = 0;
-
     function type() {
       if (index < text.length) {
         typedText.textContent += text.charAt(index);
@@ -303,8 +326,25 @@
         setTimeout(type, 150);
       }
     }
-
     window.onload = type;
+
+    let themeState = 'off';
+    const switchEl = document.getElementById("themeSwitch");
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (themeState === 'off') {
+        themeState = 'on-bottom';
+        html.setAttribute('data-theme', 'dark');
+      } else if (themeState === 'on-bottom') {
+        themeState = 'on-top';
+        html.setAttribute('data-theme', 'dark');
+      } else {
+        themeState = 'off';
+        html.setAttribute('data-theme', 'light');
+      }
+      switchEl.className = `toggle-container ${themeState}`;
+    }
   </script>
 </body>
 </html>
