@@ -214,8 +214,7 @@
     }
   </style>
 </head>
-<body data-theme="light">
-  <!-- Navbar -->
+<body>
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="home.html">Home</a></li>
@@ -225,7 +224,7 @@
       <li><a href="resume.html">Resume</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="switch-container lever-up" id="themeSwitch" onclick="toggleTheme()" title="Switch Theme">
+    <div class="switch-container" id="themeSwitch" onclick="toggleTheme()">
       <div class="screw tl"></div>
       <div class="screw tr"></div>
       <div class="label">Light</div>
@@ -237,10 +236,8 @@
     </div>
   </nav>
 
-  <!-- Typing Animation Header -->
   <div class="header"><span class="typed-text"></span></div>
 
-  <!-- Section Previews -->
   <div class="overview-section">
     <h2>👤 About Me</h2>
     <p>Know who I am, my journey, passions, and what drives me in the tech world.</p>
@@ -271,13 +268,12 @@
     <a href="contact.html">Get in Touch</a>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <!-- Scripts -->
   <script>
+    // Typing effect
     const text = "Welcome to My Portfolio";
     const typedText = document.querySelector(".typed-text");
     let index = 0;
@@ -290,17 +286,25 @@
       }
     }
 
-    window.onload = type;
-
-    const html = document.documentElement;
-    const switchBox = document.getElementById('themeSwitch');
-    let isDark = false;
+    window.onload = () => {
+      type();
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      const themeSwitch = document.getElementById("themeSwitch");
+      themeSwitch.classList.toggle("lever-down", savedTheme === "dark");
+      themeSwitch.classList.toggle("lever-up", savedTheme !== "dark");
+    };
 
     function toggleTheme() {
-      isDark = !isDark;
-      html.setAttribute("data-theme", isDark ? "dark" : "light");
-      switchBox.classList.toggle("lever-down", isDark);
-      switchBox.classList.toggle("lever-up", !isDark);
+      const html = document.documentElement;
+      const isDark = html.getAttribute("data-theme") === "dark";
+      const newTheme = isDark ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+
+      const themeSwitch = document.getElementById("themeSwitch");
+      themeSwitch.classList.toggle("lever-down", newTheme === "dark");
+      themeSwitch.classList.toggle("lever-up", newTheme !== "dark");
     }
   </script>
 </body>
