@@ -341,30 +341,42 @@
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <script>
-    const text = "About Me";
-    const typedText = document.querySelector(".typed-text");
-    let index = 0;
-    function type() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 150);
-      }
-    }
-    window.onload = type;
+<script>
+  const text = "About Me";
+  const typedText = document.querySelector(".typed-text");
+  let index = 0;
 
-    const html = document.documentElement;
-    const switchBox = document.getElementById('themeSwitch');
-    let isDark = false;
-
-    function toggleTheme() {
-      isDark = !isDark;
-      html.setAttribute("data-theme", isDark ? "dark" : "light");
-      switchBox.classList.toggle("lever-down", isDark);
-      switchBox.classList.toggle("lever-up", !isDark);
+  function type() {
+    if (index < text.length) {
+      typedText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 150);
     }
-  </script>
+  }
+
+  const html = document.documentElement;
+  const switchBox = document.getElementById('themeSwitch');
+
+  function setTheme(mode) {
+    html.setAttribute("data-theme", mode);
+    switchBox.classList.toggle("lever-down", mode === "dark");
+    switchBox.classList.toggle("lever-up", mode === "light");
+    localStorage.setItem("theme", mode);
+  }
+
+  window.onload = function () {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    type(); // Start typing after theme applied
+  };
+
+  function toggleTheme() {
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  }
+</script>
+
 </body>
 </html>
 
