@@ -305,31 +305,41 @@
   </div>
 
   <script>
-    const text = "Awards & Certifications";
-    const typedText = document.querySelector(".typed-text");
-    let index = 0;
+  const text = "Awards & Certifications";
+  const typedText = document.querySelector(".typed-text");
+  let index = 0;
 
-    function type() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 100);
-      }
+  function type() {
+    if (index < text.length) {
+      typedText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100);
     }
+  }
 
-    window.onload = type;
+  const html = document.documentElement;
+  const switchBox = document.getElementById('themeSwitch');
 
-    const html = document.documentElement;
-    const switchBox = document.getElementById('themeSwitch');
-    let isDark = false;
+  function setTheme(mode) {
+    html.setAttribute("data-theme", mode);
+    switchBox.classList.toggle("lever-down", mode === "dark");
+    switchBox.classList.toggle("lever-up", mode === "light");
+    localStorage.setItem("theme", mode);
+  }
 
-    function toggleTheme() {
-      isDark = !isDark;
-      html.setAttribute("data-theme", isDark ? "dark" : "light");
-      switchBox.classList.toggle("lever-down", isDark);
-      switchBox.classList.toggle("lever-up", !isDark);
-    }
-  </script>
+  window.onload = function () {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    type(); // start typing after theme loads
+  };
+
+  function toggleTheme() {
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  }
+</script>
+
 
 </body>
 </html>
