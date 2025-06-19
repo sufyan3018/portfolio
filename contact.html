@@ -281,7 +281,7 @@
       <li><a href="resume.html">Resume</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="switch-container lever-up" id="themeSwitch" onclick="toggleTheme()" title="Switch Theme">
+    <div class="switch-container" id="themeSwitch" onclick="toggleTheme()" title="Switch Theme">
       <div class="screw tl"></div>
       <div class="screw tr"></div>
       <div class="label">Light</div>
@@ -334,7 +334,6 @@
     const text = "Contact Me";
     const typedText = document.querySelector(".typed-text");
     let index = 0;
-
     function type() {
       if (index < text.length) {
         typedText.textContent += text.charAt(index);
@@ -342,8 +341,26 @@
         setTimeout(type, 100);
       }
     }
+    window.onload = () => {
+      type();
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+    };
 
-    window.onload = type;
+    function setTheme(mode) {
+      const html = document.documentElement;
+      const switchBox = document.getElementById('themeSwitch');
+      html.setAttribute("data-theme", mode);
+      switchBox.classList.toggle("lever-down", mode === "dark");
+      switchBox.classList.toggle("lever-up", mode === "light");
+      localStorage.setItem("theme", mode);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      setTheme(newTheme);
+    }
 
     const form = document.getElementById('contact-form');
     const popup = document.getElementById('popup');
@@ -373,17 +390,6 @@
 
     function closePopup() {
       popup.classList.remove("show");
-    }
-
-    const html = document.documentElement;
-    const switchBox = document.getElementById('themeSwitch');
-    let isDark = false;
-
-    function toggleTheme() {
-      isDark = !isDark;
-      html.setAttribute("data-theme", isDark ? "dark" : "light");
-      switchBox.classList.toggle("lever-down", isDark);
-      switchBox.classList.toggle("lever-up", !isDark);
     }
   </script>
 
