@@ -241,16 +241,27 @@
   </div>
 
   <script>
-    const html = document.documentElement;
-    const switchBox = document.getElementById('themeSwitch');
-    let isDark = false;
+  const html = document.documentElement;
+  const switchBox = document.getElementById('themeSwitch');
 
-    function toggleTheme() {
-      isDark = !isDark;
-      html.setAttribute("data-theme", isDark ? "dark" : "light");
-      switchBox.classList.toggle("lever-down", isDark);
-      switchBox.classList.toggle("lever-up", !isDark);
-    }
-  </script>
+  function setTheme(mode) {
+    html.setAttribute("data-theme", mode);
+    switchBox.classList.toggle("lever-down", mode === "dark");
+    switchBox.classList.toggle("lever-up", mode === "light");
+    localStorage.setItem("theme", mode);
+  }
+
+  window.onload = function () {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+  };
+
+  function toggleTheme() {
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  }
+</script>
+
 </body>
 </html>
