@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Behlim Mo Sufyan</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+      --section-bg: #f4f4f4;
+      --background-image: url('jh.png');
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f4f4f4;
+      --card-bg: #1e1e1e;
+      --section-bg: #1c1c1c;
+      --background-image: none;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,26 +30,34 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url(jh.png);
+      background-color: var(--bg-color);
+      background-image: var(--background-image);
       background-size: cover;
       background-position: center;
-      color: #333;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .navbar {
+      background-color: #000;
+      padding: 15px 20px;
       display: flex;
-      justify-content: center;
-      background-color: #222;
-      padding: 15px 0;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links li a {
@@ -48,12 +72,74 @@
       color: #4db8ff;
     }
 
+    .switch-container {
+      width: 60px;
+      height: 100px;
+      background: linear-gradient(to bottom, #ccc, #999);
+      border: 3px solid #666;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 2px #888;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .screw {
+      width: 6px;
+      height: 6px;
+      background: #444;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .screw.tl { top: 4px; left: 4px; }
+    .screw.tr { top: 4px; right: 4px; }
+    .screw.bl { bottom: 4px; left: 4px; }
+    .screw.br { bottom: 4px; right: 4px; }
+
+    .label {
+      color: red;
+      font-weight: bold;
+      font-size: 10px;
+      margin: 2px;
+    }
+
+    .lever {
+      width: 6px;
+      height: 40px;
+      background: linear-gradient(to bottom, #eee, #999);
+      border: 1px solid #444;
+      border-radius: 3px;
+      box-shadow: inset 0 1px 1px #aaa, 0 2px 4px rgba(0,0,0,0.4);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .lever-up .lever { transform: translateY(-20px); }
+    .lever-down .lever { transform: translateY(20px); }
+
+    .label-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+      font-weight: bold;
+      background: #ccc;
+      padding: 1px 3px;
+      border: 1px solid #333;
+      font-size: 10px;
+    }
+
     .header {
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       margin: 50px 0 20px;
-      color: #222;
     }
 
     .typed-text::after {
@@ -69,7 +155,7 @@
     .section {
       max-width: 1000px;
       margin: 40px auto;
-      background-color: white;
+      background-color: var(--card-bg);
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -119,7 +205,7 @@
     }
 
     .card {
-      background: #f4f4f4;
+      background: var(--section-bg);
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
@@ -128,15 +214,14 @@
 
     .card h4 {
       margin-bottom: 10px;
-      color: #222;
     }
 
     .footer {
       text-align: center;
       padding: 20px;
-      background-color: #e8e8e8;
+      background-color: var(--card-bg);
       font-size: 0.95rem;
-      color: #555;
+      color: var(--text-color);
       margin-top: 60px;
     }
 
@@ -178,23 +263,35 @@
         flex-direction: column;
         gap: 15px;
       }
+
+      .header {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
 
-  <header>
-    <nav class="navbar">
-      <ul class="nav-links">
-       <li><a href="home.html">Home</a></li>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
       <li><a href="index.html">About</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="award-certifications.html">Awards & Certifications</a></li>
       <li><a href="resume.html">Resume</a></li>
       <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    </ul>
+    <div class="switch-container lever-up" id="themeSwitch" onclick="toggleTheme()" title="Switch Theme">
+      <div class="screw tl"></div>
+      <div class="screw tr"></div>
+      <div class="label">Light</div>
+      <div class="lever"></div>
+      <div class="label">Dark</div>
+      <div class="screw bl"></div>
+      <div class="screw br"></div>
+      <div class="label-center">Press</div>
+    </div>
+  </nav>
 
   <div class="header"><span class="typed-text"></span></div>
 
@@ -218,7 +315,7 @@
       </div>
       <div class="card">
         <h4>🔗 LinkedIn</h4>
-        <p><a href="www.linkedin.com/in/mo-sufyan-behlim-1b55872ab" target="_blank">linkedin.com</a></p>
+        <p><a href="https://www.linkedin.com/in/mo-sufyan-behlim-1b55872ab" target="_blank">linkedin.com</a></p>
       </div>
     </div>
   </div>
@@ -276,6 +373,17 @@
 
     function closePopup() {
       popup.classList.remove("show");
+    }
+
+    const html = document.documentElement;
+    const switchBox = document.getElementById('themeSwitch');
+    let isDark = false;
+
+    function toggleTheme() {
+      isDark = !isDark;
+      html.setAttribute("data-theme", isDark ? "dark" : "light");
+      switchBox.classList.toggle("lever-down", isDark);
+      switchBox.classList.toggle("lever-up", !isDark);
     }
   </script>
 
