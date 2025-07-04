@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Awards & Certifications – Behlim Mo Sufyan</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+      --section-bg: #f4f4f4;
+      --background-image: url('jh.png');
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f4f4f4;
+      --card-bg: #1e1e1e;
+      --section-bg: #1c1c1c;
+      --background-image: none;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,27 +30,34 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url(jh.png);
+      background-color: var(--bg-color);
+      background-image: var(--background-image);
       background-size: cover;
       background-position: center;
-      color: #333;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Navbar */
     .navbar {
+      background-color: #000;
+      padding: 15px 20px;
       display: flex;
-      justify-content: center;
-      background-color: #222;
-      padding: 15px 0;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links li a {
@@ -49,14 +72,75 @@
       color: #4db8ff;
     }
 
-    /* Header Typing */
+    .switch-container {
+      width: 60px;
+      height: 100px;
+      background: linear-gradient(to bottom, #ccc, #999);
+      border: 3px solid #666;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 2px #888;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .screw {
+      width: 6px;
+      height: 6px;
+      background: #444;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .screw.tl { top: 4px; left: 4px; }
+    .screw.tr { top: 4px; right: 4px; }
+    .screw.bl { bottom: 4px; left: 4px; }
+    .screw.br { bottom: 4px; right: 4px; }
+
+    .label {
+      color: red;
+      font-weight: bold;
+      font-size: 10px;
+      margin: 2px;
+    }
+
+    .lever {
+      width: 6px;
+      height: 40px;
+      background: linear-gradient(to bottom, #eee, #999);
+      border: 1px solid #444;
+      border-radius: 3px;
+      box-shadow: inset 0 1px 1px #aaa, 0 2px 4px rgba(0,0,0,0.4);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .lever-up .lever { transform: translateY(-20px); }
+    .lever-down .lever { transform: translateY(20px); }
+
+    .label-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+      font-weight: bold;
+      background: #ccc;
+      padding: 1px 3px;
+      border: 1px solid #333;
+      font-size: 10px;
+    }
+
     .header {
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       letter-spacing: 1px;
       margin: 50px 0 20px;
-      color: #222;
     }
 
     .typed-text::after {
@@ -69,11 +153,10 @@
       50% { opacity: 0; }
     }
 
-    /* Awards Section */
     .section {
       max-width: 1000px;
       margin: 40px auto;
-      background-color: white;
+      background-color: var(--card-bg);
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -98,7 +181,7 @@
     }
 
     .award-card {
-      background-color: #f9f9f9;
+      background-color: var(--section-bg);
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -116,13 +199,11 @@
     .award-card h4 {
       font-size: 1.2rem;
       margin-bottom: 10px;
-      color: #222;
     }
 
     .award-card p {
       font-size: 1rem;
       margin-bottom: 15px;
-      color: #555;
     }
 
     .award-card a {
@@ -143,9 +224,9 @@
     .footer {
       text-align: center;
       padding: 20px;
-      background-color: #e8e8e8;
+      background-color: var(--card-bg);
       font-size: 0.95rem;
-      color: #555;
+      color: var(--text-color);
       margin-top: 60px;
     }
 
@@ -154,29 +235,41 @@
         flex-direction: column;
         gap: 15px;
       }
+
+      .header {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
 
   <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="index.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="award-certifications.html">Awards & Certifications</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="award-certifications.html">Awards & Certifications</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="switch-container lever-up" id="themeSwitch" onclick="toggleTheme()" title="Switch Theme">
+      <div class="screw tl"></div>
+      <div class="screw tr"></div>
+      <div class="label">Light</div>
+      <div class="lever"></div>
+      <div class="label">Dark</div>
+      <div class="screw bl"></div>
+      <div class="screw br"></div>
+      <div class="label-center">Press</div>
+    </div>
+  </nav>
 
   <!-- Header -->
   <div class="header"><span class="typed-text"></span></div>
 
-  <!-- Award Section -->
+  <!-- Awards Section -->
   <div class="section">
     <div class="awards-container">
       <div class="award-card">
@@ -184,40 +277,39 @@
         <p>Adani Institute of Infrastructure Engineering, 2024</p>
         <a href="Sufyan_Adani_Certificates_Combined.pdf" download>Download Certificate</a>
       </div>
-
       <div class="award-card">
         <h4>🎖️ Junoon National Competition</h4>
         <p>Participation Certificate, 2023</p>
         <a href="certificates/junoon-competition.pdf" download>Download Certificate</a>
       </div>
-
       <div class="award-card">
         <h4>💻 IBM Cloud Computing</h4>
         <p>Certified by IBM, 2023</p>
         <a href="ibm_cloud_computing.pdf" download>Download Certificate</a>
       </div>
-
       <div class="award-card">
         <h4>🤖 IBM Artificial Intelligence</h4>
         <p>Certified by IBM, 2023</p>
         <a href="ibm_AI.pdf" download>Download Certificate</a>
       </div>
-
+      <div class="award-card">
+        <h4>🧠 AI+ Developer™</h4>
+        <p>Certified – Grant Date: 10 Mar, 2025</p>
+        <a href="AICERT-Certificate.pdf" download>Download Certificate</a>
+      </div>
       <div class="award-card">
         <h4>☁️ AWS Academy Graduate – Introduction to Cloud</h4>
-        <p>60-hour AWS course | AWS Academy, 2024</p>
+        <p>60-hour AWS course | AWS Academy, 10 Sept 2024</p>
         <a href="AWS.pdf" download>Download Certificate</a>
       </div>
-
       <div class="award-card">
         <h4>🌐 Seminar – Digital Marketing & Full Stack Development</h4>
-        <p>Aditya Silver Oak Institute, 5th August 2024</p>
+        <p>Silver Oak Institute, 5th August 2024</p>
         <a href="SILVEROAK.pdf" download>Download Certificate</a>
       </div>
-
       <div class="award-card">
         <h4>🧩 Student Coordinator – TECHYHUNT Event</h4>
-        <p>Organized by Dept. of Computer Engg., ASOIT</p>
+        <p>Dept. of Computer Engg., ASOIT</p>
         <a href="TECHYHUNT.pdf" download>Download Certificate</a>
       </div>
     </div>
@@ -227,7 +319,6 @@
     © 2025 Behlim Mo Sufyan. All rights reserved.
   </div>
 
-  <!-- Typing Animation Script -->
   <script>
     const text = "Awards & Certifications";
     const typedText = document.querySelector(".typed-text");
@@ -241,8 +332,27 @@
       }
     }
 
-    window.onload = type;
-  </script>
+    const html = document.documentElement;
+    const switchBox = document.getElementById('themeSwitch');
 
+    function setTheme(mode) {
+      html.setAttribute("data-theme", mode);
+      switchBox.classList.toggle("lever-down", mode === "dark");
+      switchBox.classList.toggle("lever-up", mode === "light");
+      localStorage.setItem("theme", mode);
+    }
+
+    window.onload = function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+      type();
+    };
+
+    function toggleTheme() {
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      setTheme(newTheme);
+    }
+  </script>
 </body>
 </html>
